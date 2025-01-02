@@ -59,9 +59,6 @@ public class Explorador {
     // Método toString para representar al explorador
     @Override
     public String toString() {
-        return "Explorador{" +
-                "nombre='" + nombre + '\'' +
-                ", posicionActual=" + "(" + posicionActual.getCoordenadaFila() + ", " + posicionActual.getCoordenadaCol() + ")" +
-                '}';
+        return "Explorador{" + "nombre='" + nombre + '\'' +  ", posicionActual=" + "(" + posicionActual.getCoordenadaFila() + ", " + posicionActual.getCoordenadaCol() + ")" +  '}';
     }
 }
