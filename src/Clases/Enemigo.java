@@ -1,13 +1,13 @@
-// 3 de enero.
+//3 de enero
 package Clases;
 
 import java.util.Random;
 
 public class Enemigo {
-   //atributos  
     private String nombre;
     private Posicion posicionActual;
 
+    // Constantes para el movimiento
     public static final int ARRIBA = 1;
     public static final int ABAJO = 2;
     public static final int DERECHA = 3;
@@ -15,14 +15,14 @@ public class Enemigo {
 
     public Enemigo(String nombre) {
         this.nombre = nombre;
-        Random random = new Random(); // prefiero hacer los randoms de esta forma.
+        Random random = new Random();
         int filaAleatoria = random.nextInt(6);
         int columnaAleatoria = random.nextInt(20);
         this.posicionActual = new Posicion(filaAleatoria, columnaAleatoria);
     }
 
-    public void moverseAleatorio() {
-        Random random = new Random();
+    public void moverseAleatorio(Mapa mapa) { // para diferenciar lo he llamado moverseAleatorio
+        Random random = new Random(); // se me hace mas cómodo realizar el random asi
         int direccion = random.nextInt(4) + 1;
 
         int nuevaFila = posicionActual.getCoordenadaFila();
@@ -43,12 +43,20 @@ public class Enemigo {
                 break;
         }
 
-        posicionActual.setCoordenadaFila(nuevaFila);
-        posicionActual.setCoordenadaCol(nuevaCol);
+        if (mapa.obtenerElemento(nuevaFila, nuevaCol) == ' ') {
+            posicionActual.setCoordenadaFila(nuevaFila);
+            posicionActual.setCoordenadaCol(nuevaCol);
+        }
     }
-// accesor
+
     public Posicion getPosicionActual() {
         return posicionActual;
     }
-}
 
+    public String getNombre() {
+        return nombre;
+    }
+    public void setPosicionActual(Posicion posicionActual) {
+        this.posicionActual = posicionActual;
+    }
+}
