@@ -1,65 +1,30 @@
-// 2 de enero
+// 2 de enero y algunas ediciones el 4
 package Clases;
-
-import java.util.Random;
-
+// Clase Explorador que representa al jugador
 public class Explorador {
     private String nombre;
-    private Posicion posicionActual;
+    private Posicion posicion;
+    private Mapa mapa;
 
-    // Constantes para el movimiento
-    public static final int ARRIBA = 1;
-    public static final int ABAJO = 2;
-    public static final int DERECHA = 3;
-    public static final int IZQUIERDA = 4;
-
-    public Explorador(String nombre) {
+    public Explorador(String nombre, Mapa mapa) {
         this.nombre = nombre;
-        Random random = new Random();
-        int filaAleatoria = random.nextInt(6); // Filas entre 0 y 5
-        this.posicionActual = new Posicion(filaAleatoria, 0); // Siempre en la primera columna
+        this.mapa = mapa;
+        this.posicion = mapa.inicializarExplorador();
     }
 
-    public void moverse(int direccion) {
-        int nuevaFila = posicionActual.getCoordenadaFila();
-        int nuevaCol = posicionActual.getCoordenadaCol();
-
-        switch (direccion) {
-            case ARRIBA: {
-                if (nuevaFila > 0) nuevaFila--;
-                break;
-            }
-            case ABAJO: {
-                if (nuevaFila < 5) nuevaFila++;
-                break;
-            }
-            case DERECHA: {
-                if (nuevaCol < 19) nuevaCol++;
-                break;
-            }
-            case IZQUIERDA: {
-                if (nuevaCol > 0) nuevaCol--;
-                break;
-            }
-            default: {
-                System.out.println("Dirección no válida");
-                break;
-            }
-        }
-
-        posicionActual.setCoordenadaFila(nuevaFila);
-        posicionActual.setCoordenadaCol(nuevaCol);
+    public void mover(int direccion) {
+        mapa.moverEntidad(posicion, direccion, 'J');
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public Posicion getPosicionActual() {
-        return posicionActual;
+    public Posicion getPosicion() {
+        return posicion;
     }
 
-    public void setPosicionActual(Posicion nuevaPosicion) {
-        this.posicionActual = nuevaPosicion;
+    public void setPosicion(Posicion posicion) {
+        this.posicion = posicion;
     }
 }
