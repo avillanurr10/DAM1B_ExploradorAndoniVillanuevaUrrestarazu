@@ -20,7 +20,7 @@ public class Main {
         String nombreExplorador = teclado.nextLine();
         Explorador explorador = new Explorador(nombreExplorador, mapa);
 
-        // Para crear los enemigos. No hice la clase Enemigo inteligente porque al principio la hice y me salio mal 
+        // Para crear los enemigos. No hice la clase Enemigo inteligente porque al principio la hice y me salio mal
         // asi que para que me saliese bien lo tuve que hacer desde el main
         Enemigo[] enemigos = new Enemigo[3];
         for (int i = 0; i < enemigos.length; i++) {
@@ -28,8 +28,8 @@ public class Main {
         }
 
         // Ciclo del juego
-        boolean juegoActivo = true;
-        while (juegoActivo) {
+        boolean ciclo = true;
+        while (ciclo) {
             mapa.mostrarMapa();
 
             System.out.println("\nUsa las teclas para moverte:");
@@ -74,10 +74,10 @@ public class Main {
            // estado de jugo
             if (mapa.exploradorEnTesoro()) {
                 System.out.println("¡Felicidades! Has encontrado el tesoro y ganado el juego.");
-                juegoActivo = false;
+                ciclo = false;
             } else if (mapa.exploradorEnPeligro()) {
                 System.out.println("¡Has muerto! Un enemigo o una trampa te ha matado.");
-                juegoActivo = false;
+                ciclo = false;
             }
         }
 
