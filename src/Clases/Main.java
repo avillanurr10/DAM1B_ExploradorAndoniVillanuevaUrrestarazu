@@ -20,7 +20,8 @@ public class Main {
         String nombreExplorador = teclado.nextLine();
         Explorador explorador = new Explorador(nombreExplorador, mapa);
 
-        // Para crear los enemigos
+        // Para crear los enemigos. No hice la clase Enemigo inteligente porque al principio la hice y me salio mal 
+        // asi que para que me saliese bien lo tuve que hacer desde el main
         Enemigo[] enemigos = new Enemigo[3];
         for (int i = 0; i < enemigos.length; i++) {
             enemigos[i] = new Enemigo("Enemigo" + (i + 1), mapa);
